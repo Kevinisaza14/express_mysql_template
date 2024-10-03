@@ -16,12 +16,16 @@ exports.getAllUsers = async (req, res) => {
     try {
         connection = await db.getConnection();
         const [result] = await connection.query("select * from users");
+        console.log("entre a getAllUsers");
+        
         // TODO: Verificar por que no sale el mensaje "No se encontraron usuarios"
         if (result.length === 0) {
+            console.log("entre 2")
             return res.status(204).json({
                 message: "No se encontraron usuarios"
             });
         }
+        console.log("entre a 3");
         return res.status(200).json({
             message: "Lista de usuarios encontrados",
             result
@@ -31,9 +35,9 @@ exports.getAllUsers = async (req, res) => {
             message: "No se pudo obtener los usuarios",
             error: "Error 500: " + error
         });
-    } finally {
+    } /* finally {
         connection.release();
-    }
+    } */
 }
 
 exports.createUser = async (req, res) => {
@@ -55,7 +59,7 @@ exports.createUser = async (req, res) => {
         // evitar inyección sql
         connection = await db.getConnection();
         const sql = "insert into users values (?, ?, ?, ?, default, default)";
-        await connection.query(sql, [id, username, email, hashPassword]);
+        await db.query(sql, [id, username, email, hashPassword]);
         return res.status(201).json({
             message: "Usuario registrado correctamente",
             user: { id, username, email, hashPassword }
@@ -65,9 +69,9 @@ exports.createUser = async (req, res) => {
             message: "No se pudo registrar usuario",
             error: "Error 500: " + error
         });
-    } finally {
+    } /* finally {
         connection.release();
-    }
+    } */
 }
 
 // TODO: getUserById, updateUser, deleteUser
