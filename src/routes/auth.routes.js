@@ -1,11 +1,12 @@
 // TODO: Desarrollar el codigo para las rutas de "/signin", "/signup"
-
 const express = require("express");
-const auth = express.Router();
-const authController = require("../controllers/auth.controller");
-const userController = require("../controllers/user.controller.js");
+const router = express.Router();
+// importamos controlador y middleware
+const authController = require("../controllers/auth.controller.js");
+const authMiddleware = require("../middlewares/auth.middleware.js");
 // rutas
-auth.post("/signin", authController.signin);
-auth.post("/signup", userController.createUser);
+router.post("/auth/signup", authController.signUp);
+router.post("/auth/signin", authController.signIn);
+router.get("/profile", authMiddleware, authController.profile);
 
-module.exports = auth;  
+module.exports = router;
