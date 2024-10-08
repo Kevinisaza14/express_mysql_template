@@ -33,7 +33,7 @@ exports.getAllUsers = async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 exports.getUserById = async (req, res) => {
@@ -56,7 +56,7 @@ exports.getUserById = async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 exports.createUser = async (req, res) => {
@@ -96,7 +96,7 @@ exports.createUser = async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 exports.updateUser= async (req, res) => {
@@ -150,7 +150,7 @@ exports.updateUser= async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 exports.deleteUser = async (req, res) => {
@@ -174,7 +174,7 @@ exports.deleteUser = async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 

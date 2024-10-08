@@ -52,7 +52,7 @@ exports.signUp = async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 exports.signIn = async (req, res) => {
@@ -99,12 +99,17 @@ exports.signIn = async (req, res) => {
             error: "Error 500: " + error
         });
     } finally {
-        connection.release();
+        if (connection) connection.release();
     }
 }
 exports.profile = async (req, res) => {
     res.json({
         message: "Bienvenido a tu perfil de usuario: " + req.user.email,
         user: req.user
+    })
+}
+exports.private = async (req, res) => {
+    res.json({
+        message: `Bienvenido ${req.user.email} a tu ruta privada`
     })
 }
