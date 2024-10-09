@@ -5,7 +5,7 @@ const mysql = require("mysql2/promise");
 // 2- Evitar cuellos de botella: Administra conexiones y las reasigna según las necesidades
 // 3- AL tener disponible la conexión, nos evita la necesidad de utilizar await en la conexión de la misma
 
-db = mysql.createPool({
+const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
