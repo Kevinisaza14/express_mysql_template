@@ -1,0 +1,186 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Plantilla API REST con ExpressJS y MySQL",
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ]
+    },
+    "paths": {
+        "/api/v1/users": {
+            "get": {
+                "summary": "Recuperar una lista de usuarios",
+                "description": "Recuperar una lista de usuarios de la base de datos.",
+                "responses": {
+                    "200": {
+                        "description": "Una lista de usuarios.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "description": "El ID del usuario.",
+                                                "example": 1
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "El nombre del usuario.",
+                                                "example": "John Doe"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/{id}": {
+            "get": {
+                "summary": "Recuperar un solo usuario",
+                "description": "Recuperar un solo usuario por ID de la base de datos.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "El ID del usuario.",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Un solo usuario.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "description": "El ID del usuario.",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "El nombre del usuario.",
+                                            "example": "John Doe"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuario no encontrado."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crear un nuevo usuario",
+                "description": "Crear un nuevo usuario en la base de datos.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "El nombre del usuario.",
+                                        "example": "John Doe"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario creado exitosamente."
+                    },
+                    "400": {
+                        "description": "Entrada inválida."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualizar un usuario",
+                "description": "Actualizar la información de un usuario en la base de datos.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "El ID del usuario.",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "El nombre del usuario.",
+                                        "example": "John Doe"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario actualizado exitosamente."
+                    },
+                    "400": {
+                        "description": "Entrada inválida."
+                    },
+                    "404": {
+                        "description": "Usuario no encontrado."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Eliminar un usuario",
+                "description": "Eliminar un usuario de la base de datos.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "El ID del usuario.",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario eliminado exitosamente."
+                    },
+                    "404": {
+                        "description": "Usuario no encontrado."
+                    }
+                }
+            }
+        }
+    }
+}
