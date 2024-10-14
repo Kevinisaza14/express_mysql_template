@@ -20,6 +20,7 @@
     "mysql2": "^3.11.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "php": "^1.1.0",
     "uuid": "^10.0.0"
   }
 }
