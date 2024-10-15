@@ -86,8 +86,8 @@ exports.signIn = async (req, res) => {
             });
         }
         const token = jwt.sign({
-            id: user[0].id,
-            email: user[0].email,
+            id: user[0].id, // payload
+            email: user[0].email, // payload
         }, process.env.JWT_SECRET, {expiresIn: "1h"});
         return res.status(200).json({
             message: `Login correcto!`,

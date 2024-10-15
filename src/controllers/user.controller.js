@@ -1,7 +1,7 @@
 const db = require("../config/dbMySQL.js");
 const { v4: uuidv4 } = require('uuid');
 const CryptoJS = require("crypto-js");
-const Joi = require("joi");
+const Joi = require("joi"); // validador de datos
 // creamos schema de validacion de user
 const userSchema = Joi.object({
     username: Joi.string().min(3).max(15).required(),
