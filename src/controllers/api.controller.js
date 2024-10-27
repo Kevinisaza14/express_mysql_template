@@ -38,7 +38,6 @@ exports.getCreditCards = async (req, res) => {
         });
     }
 }
-
 //configurar nueva apiRest
 //https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES?size=10
 
