@@ -3,7 +3,6 @@ const cors = require("cors");
 const api = new express();
 require("dotenv").config(); // importamos la configuración de entorno //sirve process.env.PORT
 
-
 const userRoutes = require("./routes/user.routes.js"); // importamos las rutas de user
 const authRoutes = require("./routes/auth.routes.js"); // importamos las rutas de auth
 const apiRoutes = require("./routes/api.routes.js"); // importamos las rutas de api
